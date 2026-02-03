@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lebanese Indoctrination Self-Assessment</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Landing Page -->
+        <section id="landing" class="page active">
+            <div class="hero">
+                <h1>The Lebanese Indoctrination Self-Assessment</h1>
+                <p class="subtitle">A reflective exercise for recognizing inherited beliefs vs. examined convictions.</p>
+            </div>
+
+            <div class="intro-card">
+                <h2>How to Use This Test</h2>
+                <p>Answer honestly — this is for you, not for anyone else. There are no "right" answers, but patterns in your responses reveal whether your beliefs are truly yours or were installed without your consent.</p>
+
+                <div class="scoring-guide">
+                    <h3>Scoring Guide</h3>
+                    <p>For each statement, rate yourself 0-3:</p>
+                    <ul>
+                        <li><strong>0</strong> = Never / Not at all</li>
+                        <li><strong>1</strong> = Rarely / Slightly</li>
+                        <li><strong>2</strong> = Sometimes / Moderately</li>
+                        <li><strong>3</strong> = Often / Strongly</li>
+                    </ul>
+                </div>
+
+                <button class="btn-primary" onclick="startSurvey()">Begin Assessment</button>
+            </div>
+        </section>
+
+        <!-- Survey Sections -->
+        <section id="survey" class="page">
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <span class="progress-text" id="progressText">Part 1 of 5</span>
+            </div>
+
+            <!-- Part 1: Sectarian Reflexes -->
+            <div class="survey-part" id="part1">
+                <h2>Part 1: Sectarian Reflexes</h2>
+                <div class="questions">
+                    <div class="question" data-question="1">
+                        <p class="question-text">1. When I hear someone's family name, I immediately categorize them by sect before anything else.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="2">
+                        <p class="question-text">2. I feel uncomfortable when a family member dates or marries someone from a different sect.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="3">
+                        <p class="question-text">3. I believe my sect has suffered more than others in Lebanese history.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="4">
+                        <p class="question-text">4. I can list crimes committed by other sects but struggle to name crimes committed by my own.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="5">
+                        <p class="question-text">5. I use different words for the same event depending on who did it (e.g., "resistance" vs. "militia," "martyr" vs. "terrorist").</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="6">
+                        <p class="question-text">6. I feel a sense of pride or shame based on what "my people" did, even if I wasn't born yet.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-score">Section Score: <span id="score1">0</span> / 18</div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="goToLanding()">Back</button>
+                    <button class="btn-primary" onclick="nextPart(1)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Part 2: Political Party Loyalty -->
+            <div class="survey-part" id="part2" style="display: none;">
+                <h2>Part 2: Political Party Loyalty</h2>
+                <div class="questions">
+                    <div class="question" data-question="7">
+                        <p class="question-text">7. I defend my za'im (political leader) even when I privately disagree with their actions.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="8">
+                        <p class="question-text">8. I believe that if my party's leader is corrupt, the others are worse.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="9">
+                        <p class="question-text">9. I have never voted for someone outside my traditional political alignment.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not true</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly true</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Mostly true</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Completely true</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="10">
+                        <p class="question-text">10. When my leader changes position on an issue, I find myself agreeing with the new position.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="11">
+                        <p class="question-text">11. I feel that criticizing my party publicly is a form of betrayal.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="12">
+                        <p class="question-text">12. I use "we" when talking about my political party's actions.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-score">Section Score: <span id="score2">0</span> / 18</div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="prevPart(2)">Previous</button>
+                    <button class="btn-primary" onclick="nextPart(2)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Part 3: Historical Narratives -->
+            <div class="survey-part" id="part3" style="display: none;">
+                <h2>Part 3: Historical Narratives</h2>
+                <div class="questions">
+                    <div class="question" data-question="13">
+                        <p class="question-text">13. I learned Lebanese history primarily from family stories and party media rather than multiple sources.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="14">
+                        <p class="question-text">14. I believe the civil war had clear "good guys" and "bad guys."</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="15">
+                        <p class="question-text">15. I think certain Lebanese communities are "originally" from somewhere else and don't fully belong.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="16">
+                        <p class="question-text">16. I have strong opinions about events I never witnessed and have never researched independently.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="17">
+                        <p class="question-text">17. The version of history I learned at home contradicts what other Lebanese learned at theirs, and I assume mine is correct.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="18">
+                        <p class="question-text">18. I find it difficult to say "I don't know enough about this period to have an opinion."</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-score">Section Score: <span id="score3">0</span> / 18</div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="prevPart(3)">Previous</button>
+                    <button class="btn-primary" onclick="nextPart(3)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Part 4: Foreign Alignments -->
+            <div class="survey-part" id="part4" style="display: none;">
+                <h2>Part 4: Foreign Alignments</h2>
+                <div class="questions">
+                    <div class="question" data-question="19">
+                        <p class="question-text">19. I trust news from a foreign country more than Lebanese sources because that country aligns with my community.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="20">
+                        <p class="question-text">20. I feel that a foreign power (Iran, Saudi Arabia, France, US, Syria, Israel) has Lebanon's best interests at heart.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="21">
+                        <p class="question-text">21. I excuse interventions by "friendly" foreign powers while condemning identical actions by "enemy" powers.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="22">
+                        <p class="question-text">22. I believe my community's survival depends on external protection.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="23">
+                        <p class="question-text">23. I have more emotional reaction to events in a foreign "patron" country than in other parts of Lebanon.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="24">
+                        <p class="question-text">24. I would accept a political outcome I dislike if my preferred foreign power imposed it.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-score">Section Score: <span id="score4">0</span> / 18</div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="prevPart(4)">Previous</button>
+                    <button class="btn-primary" onclick="nextPart(4)">Next Section</button>
+                </div>
+            </div>
+
+            <!-- Part 5: Cognitive Patterns -->
+            <div class="survey-part" id="part5" style="display: none;">
+                <h2>Part 5: Cognitive Patterns</h2>
+                <div class="questions">
+                    <div class="question" data-question="25">
+                        <p class="question-text">25. I feel physical discomfort (anger, anxiety) when someone criticizes my sect or party.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="26">
+                        <p class="question-text">26. I assume people who disagree with me are either ignorant, paid, or brainwashed.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="27">
+                        <p class="question-text">27. I share news that confirms my beliefs without verifying the source.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="28">
+                        <p class="question-text">28. I have blocked/muted people on social media primarily for their political or sectarian views.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Never</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Rarely</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Sometimes</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Often</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="29">
+                        <p class="question-text">29. I can predict almost exactly what my parents believe politically — and I believe the same things.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not at all</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Moderately</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Strongly</span></button>
+                        </div>
+                    </div>
+                    <div class="question" data-question="30">
+                        <p class="question-text">30. I have never seriously considered that I might be wrong about a core political belief.</p>
+                        <div class="rating-buttons">
+                            <button class="rating-btn" data-value="0">0<span>Not true</span></button>
+                            <button class="rating-btn" data-value="1">1<span>Slightly true</span></button>
+                            <button class="rating-btn" data-value="2">2<span>Mostly true</span></button>
+                            <button class="rating-btn" data-value="3">3<span>Completely true</span></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-score">Section Score: <span id="score5">0</span> / 18</div>
+                <div class="nav-buttons">
+                    <button class="btn-secondary" onclick="prevPart(5)">Previous</button>
+                    <button class="btn-primary" onclick="showResults()">See Results</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Page -->
+        <section id="results" class="page">
+            <h1>Your Results</h1>
+
+            <div class="results-summary">
+                <div class="total-score">
+                    <span class="score-number" id="totalScore">0</span>
+                    <span class="score-max">/ 90</span>
+                </div>
+                <div class="interpretation" id="interpretation"></div>
+            </div>
+
+            <div class="section-breakdown">
+                <h3>Section Breakdown</h3>
+                <div class="breakdown-grid">
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Sectarian Reflexes</span>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" id="bar1"></div>
+                        </div>
+                        <span class="breakdown-score" id="final1">0/18</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Political Loyalty</span>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" id="bar2"></div>
+                        </div>
+                        <span class="breakdown-score" id="final2">0/18</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Historical Narratives</span>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" id="bar3"></div>
+                        </div>
+                        <span class="breakdown-score" id="final3">0/18</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Foreign Alignments</span>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" id="bar4"></div>
+                        </div>
+                        <span class="breakdown-score" id="final4">0/18</span>
+                    </div>
+                    <div class="breakdown-item">
+                        <span class="breakdown-label">Cognitive Patterns</span>
+                        <div class="breakdown-bar">
+                            <div class="breakdown-fill" id="bar5"></div>
+                        </div>
+                        <span class="breakdown-score" id="final5">0/18</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="reflection-section">
+                <h2>The Uncomfortable Questions</h2>
+                <p class="reflection-intro">After seeing your results, sit with these:</p>
+
+                <div class="reflection-card">
+                    <h4>1. The Counterfactual</h4>
+                    <p>If you had been born into a different Lebanese family (different sect, different region, different class), would you hold the same political beliefs you hold today? If not, are those beliefs really <em>yours</em>?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <h4>2. The Mirror Test</h4>
+                    <p>Take any criticism you have of another Lebanese community. Does that criticism also apply to your own community at any point in history? If yes, why does it only bother you when <em>they</em> do it?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <h4>3. The Benefit Test</h4>
+                    <p>Who benefits from you believing what you believe? Is it you? Your community? Or a political leader who needs your loyalty?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <h4>4. The Source Test</h4>
+                    <p>Can you trace your strongest political belief to a moment of independent research and reflection? Or does it trace back to something you were told before age 15?</p>
+                </div>
+
+                <div class="reflection-card">
+                    <h4>5. The Empathy Test</h4>
+                    <p>Can you articulate — genuinely, not as a caricature — why someone from an opposing community believes what they believe? Can you find anything legitimate in their fear or grievance?</p>
+                </div>
+            </div>
+
+            <div class="note-section">
+                <h3>A Note on Results</h3>
+                <p>Scoring high doesn't make you a bad person. It makes you a normal product of a system designed to divide Lebanese people against each other for the benefit of those in power.</p>
+                <p>The za'ims need you indoctrinated. The sectarian system needs you afraid of your neighbors. The foreign powers need you loyal to them rather than to each other.</p>
+                <p><strong>The first act of resistance is seeing the cage.</strong></p>
+                <p class="tagline"><em>Killon ya3ne killon</em> — but that includes the one you're making excuses for.</p>
+            </div>
+
+            <div class="action-buttons">
+                <button class="btn-secondary" onclick="retakeSurvey()">Retake Assessment</button>
+                <button class="btn-primary" onclick="shareSurvey()">Share This Tool</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
